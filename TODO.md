@@ -3,6 +3,7 @@
 _Last updated: 2026-11-09_
 
 ## Decide
+- [ ] **RAG / semantic recall: decide the design and when to build it** (prompt drafted 9 Nov). Semantic search over the activity log, email summaries, journal and Reflect summaries, and old Board/Log notes, through one read-only `recall` tool. Proposed: `sqlite-vec` inside the existing SQLite database, a local embedding model (no data leaves the VPS), and hybrid keyword (SQLite FTS5) + vector search. Measured on 30–50 labelled questions (recall@5, MRR) for the CV. The index must follow the existing deletion rules: Reflect transcripts (90 days, blanked in the log) and email summaries (90 days) lose their embeddings too. Decide: (1) the embedding model: local (small, ~100 MB, so it fits once friends each get a container in Phase 5, or one shared model for all) or hosted (Voyage AI, Anthropic's recommended partner: a new outbound service that would see your data, needs your OK); (2) what gets indexed; (3) timing: Phase 1 and the repo split are done, so either now on its own `rag` branch, or after the friends phases (3–6).
 - [ ] **OK the Telegram command menu:** list every / command in the chat's ☰ Menu and when typing `/`, from one list shared with `/help` (adds the missing `/done`). Free, no Claude calls. Claude suggests folding it into Phase 3 (onboarding for new users) of the packaging plan.
 - [ ] **Clear the reply box on every bot start?** Say yes and Claude adds it, so an old stuck "Replying to…" can never come back after a deploy.
 - [ ] **Paddle Mon 07:00–08:30 vs GP lines opening 08:30:** decide where you'll make the GP call (it's on the 📅 Schedule for 08:30).
@@ -73,6 +74,7 @@ _Last updated: 2026-11-09_
 - [ ] **Test your keys:** whenever you add keys to `.env`, run `.\.venv\Scripts\python.exe -m ultron.check`. Each service shows ✅, or ❌ with what to fix. It only reads; nothing is changed anywhere. For Notion you can paste the whole page URL into `NOTION_ROOT_PAGE_ID`.
 - [ ] **Topics group ids:** once the group exists, send `/status` inside each group topic and copy the chat id → `TELEGRAM_GROUP_ID` and each topic id → `TELEGRAM_TOPIC_CHAT` / `_REFLECT` / `_BRIEFS`. Put them in `.env` **on the server** (`nano ~/ultron/.env`, then `docker restart ultron`), and in your PC's `.env` too if you want the copies to match.
 - [ ] **Move Apple Notes to Notion:** paste your existing notes into the 📥 Inbox whenever you like. Ultron sorts them onto the Board within the hour.
+- [ ] **RAG eval set (later): check the labelled questions** once Claude builds them from a backup copy. Correct any wrong expected answers. This set stays in this private repo because it holds your data; a synthetic one goes in the public repo.
 
 ## Waiting on review
 _None._
