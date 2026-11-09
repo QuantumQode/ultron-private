@@ -14,8 +14,9 @@ _Last updated: 2026-11-09_
 - [ ] **Look over your 🗂 Board** (https://www.notion.so/3ffa7060f22081acb1b0e1ad835f032c) and say what's filed wrong. Try editing it: tick a to-do, delete a line, reword one, delete a "(?) …" question, or type a new line. Then run `/sync` in Telegram, or ask Claude to sync, and check your edits are picked up.
 
 ## Do (manual setup)
+- [ ] **Deploy Phase 3 (email from any provider):** say "deploy" (backup first) or run `cd ~/ultron && docker compose -f deploy/docker-compose.yml up -d --build`. Your `.env` needs no change: `YAHOO_USER`/`YAHOO_APP_PASSWORD` still work (checked 9 Nov: Yahoo login OK, 13 unread). New names for friends: `EMAIL_ADDRESS`, `EMAIL_APP_PASSWORD`.
+- [ ] **First friend on Gmail = the real Gmail test:** when they set up, run the email check (`ultron.check`). If Gmail refuses an app password, tell Claude.
 - [ ] **Re-clone on your PC** (your old copy points at the renamed archive): in a new folder run `git clone https://github.com/QuantumQode/ultron.git`, then inside it `git clone https://github.com/QuantumQode/ultron-private.git private`, copy your `.env` across, and reinstall (`python -m venv .venv` then `.\.venv\Scripts\python.exe -m pip install -e ".[dev]"`). TODO.md is now `private/TODO.md`.
-- [ ] **Look at your public repo** https://github.com/QuantumQode/ultron: read the README as a recruiter would and say what to change. Optionally add a description, topics (python, telegram-bot, claude, notion) and pin it on your profile.
 - [ ] **Check the Phase 1 changes (deployed 9 Nov, 12:06):** 🗂 Board → 🧠 About me shows a new line "Planning settings: plan up to 70% of free time · …" plus your expanded "Coaching style", new "Planning style" and expanded sport facts. Tonight's 21:00 plan should look like usual (same budget, 8-block limit, gym ≥90 min after padel, wind-down "journal or meditate"). To change a number, just ask Ultron (e.g. "make the gaps between blocks 15 min"): you'll get a 💡 card.
 - [ ] **Clean-up later:** delete `~/ultron/backups/pre-neutralise-2026-11-09.db`, `pre-neutralise-deploy-2026-11-09.db` (if made) and the old work folder `~/ultron-neutralise` once Phase 1 has run fine for a few days.
 - [ ] **Redo Monday's plan:** tap ⏭ Skip on tonight's draft (it has no padel and a 07:00 wake), then ask Ultron for a new plan (~$0.01–0.03). It should show wake 06:30, routine 06:30–07:00, Padel 07:00–08:30.
@@ -83,6 +84,8 @@ _None._
 - [ ] **Claude prices are hard-coded** in `ultron/ops/guard.py` (`PRICES`, checked 2026-10-19). Update them if Anthropic changes prices or you switch models; until then, unknown models are costed at the highest rate.
 
 ## Done
+- [x] 2026-11-09: **Public README reviewed:** you're happy with it.
+- [x] 2026-11-09: **Phase 3 built: email from any provider.** Gmail, Yahoo, iCloud or any IMAP server with an app password; the provider is guessed from the address. Outlook/Hotmail is refused with a clear reason (decided: OAuth later, only if a friend needs it). 623 tests pass.
 - [x] 2026-11-09: **Phase 1 + repo switch deployed** (12:06). Started cleanly; the "Planning settings" line was added to 🧠 About me (shows on the Board after the next sync, or `/sync`). Backup from just before: `~/ultron/backups/pre-neutralise-deploy-2026-11-09.db`.
 - [x] 2026-11-09: **Repos split:** public https://github.com/QuantumQode/ultron (code, MIT, CI passing), private `ultron-private` (TODO, PLAN, your preferences, roadmaps, cloned into `~/ultron/private`), old history in private `ultron-archive`. The server now pulls from the public repo.
 - [x] 2026-11-09: **Phase 2 decisions:** public repo `ultron`, old one renamed `ultron-archive`, personal files in private `ultron-private`; MIT licence; public commits as "Pouria Ghasemi" with the GitHub noreply email; PLAN.md stays private only. Public tree built and checked: gitleaks clean, none of your `.env` secrets or personal names in it, 602 tests pass.
