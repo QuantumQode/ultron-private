@@ -13,6 +13,12 @@ _Last updated: 2026-11-09_
 - [ ] **Look over your 🗂 Board** (https://www.notion.so/3ffa7060f22081acb1b0e1ad835f032c) and say what's filed wrong. Try editing it: tick a to-do, delete a line, reword one, delete a "(?) …" question, or type a new line. Then run `/sync` in Telegram, or ask Claude to sync, and check your edits are picked up.
 
 ## Do (manual setup)
+- [ ] **Phase 2 repo split, your GitHub steps** (details in Claude's reply, 9 Nov):
+  1. Rename `QuantumQode/ultron` → `ultron-archive` (Settings → General → Repository name). It stays private.
+  2. Create an empty **public** repo `ultron` (no README, licence or .gitignore) and an empty **private** repo `ultron-private`.
+  3. `ultron-archive` → Settings → Deploy keys: delete "ultron-vps-deploy". In `ultron` → Settings → Deploy keys → Add: title `ultron-vps-deploy`, paste the server's `~/.ssh/ultron_deploy.pub`, tick **Allow write access**.
+  4. `ultron-private` → Deploy keys → Add: title `ultron-vps-private`, key `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPl9eIgS+5iDXVeg62b2YKtc6Wib0c/9z8xolQqSTeKI ultron-vps-private`, tick **Allow write access**.
+  5. Tell Claude "done": it pushes both repos and switches the server over.
 - [ ] **Deploy Phase 1 (neutralise):** it's merged and pushed, but deploying needs your OK. Say "deploy", or run on the server: `cd ~/ultron && docker compose -f deploy/docker-compose.yml up -d --build`. Backup taken first: `~/ultron/backups/pre-neutralise-2026-11-09.db`.
 - [ ] **After that deploy, check:** 🗂 Board → 🧠 About me shows a new line "Planning settings: plan up to 70% of free time · …" plus your expanded "Coaching style", new "Planning style" and expanded sport facts. Tonight's 21:00 plan should look like usual (same budget, 8-block limit, gym ≥90 min after padel, wind-down "journal or meditate"). To change a number, just ask Ultron (e.g. "make the gaps between blocks 15 min"): you'll get a 💡 card.
 - [ ] **Clean-up later:** delete `~/ultron/backups/pre-neutralise-2026-11-09.db` and the work folder (`git worktree remove ~/ultron-neutralise`) once Phase 1 has run fine for a few days.
@@ -80,6 +86,7 @@ _None._
 - [ ] **Claude prices are hard-coded** in `ultron/ops/guard.py` (`PRICES`, checked 2026-10-19). Update them if Anthropic changes prices or you switch models; until then, unknown models are costed at the highest rate.
 
 ## Done
+- [x] 2026-11-09: **Phase 2 decisions:** public repo `ultron`, old one renamed `ultron-archive`, personal files in private `ultron-private`; MIT licence; public commits as "Pouria Ghasemi" with the GitHub noreply email; PLAN.md stays private only. Public tree built and checked: gitleaks clean, none of your `.env` secrets or personal names in it, 602 tests pass.
 - [x] 2026-11-09: **Phase 1 (neutralise) built:** no personal rules, tone or names left in the code or tests. Your rules now live in your profile: facts (Coaching style expanded, new Planning style, sport fact expanded) and planning settings (70%, 10 min gaps, 8 blocks, 3 under 25 min, wake 30 min early, 30 min wind-down "journal or meditate", routine 35 min, gym 90 min after sport). A before/after snapshot of every prompt showed the same numbers and info reach Claude. 602 tests pass.
 - [x] 2026-11-09: **Phase 1 started:** a snapshot of every prompt Claude receives was taken from last night's backup, so the refactor can be checked line by line. Friends get a guide that uses the terminal a bit (they're capable, give them agency).
 - [x] 2026-11-09: **Packaging decisions:** your rules become profile settings (shown in 🧠 About me); public repo holds the code with a private repo for your personal files; you handle how friends send keys; no privacy note.
