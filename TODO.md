@@ -1,0 +1,261 @@
+# TODO
+
+_Last updated: 2026-11-09_
+
+## Decide
+- [ ] **OK the Telegram command menu:** list every / command in the chat's ☰ Menu and when typing `/`, from one list shared with `/help` (adds the missing `/done`). Free, no Claude calls. Claude suggests folding it into Phase 3 (onboarding for new users) of the packaging plan.
+- [ ] **Clear the reply box on every bot start?** Say yes and Claude adds it, so an old stuck "Replying to…" can never come back after a deploy.
+- [ ] **Paddle Mon 07:00–08:30 vs GP lines opening 08:30:** decide where you'll make the GP call (it's on the 📅 Schedule for 08:30).
+- [ ] **OK the chat fix for one-off appointments:** Ultron couldn't add "padel Mon 7am" with a time from chat, so it became an untimed to-do. Proposed: chat can add a timed one-off, `set_time` can turn a dated to-do into one, and Ultron asks "just this Monday or every Monday?". Claude will list the steps first.
+- [ ] **Pick which "smarter Ultron" ideas to build next** (list in Claude's reply, 22 Oct). Claude suggests starting with: learn real task durations, a morning energy tap, and next steps for each goal.
+- [ ] **Speech-to-text provider for voice notes:** decide at Phase 7.
+- [ ] **Answer the email questions on your 🗂 Board:** to-dos from emails more than a week old show "(?) From an email on 20 Sep. Still needed?". Tick the done ones, delete the ones you don't need, or delete just the "(?) …" part to keep one. All 647 emails are read: 46 email to-dos are on the Board.
+- [ ] **Look over your 🗂 Board** (https://www.notion.so/3ffa7060f22081acb1b0e1ad835f032c) and say what's filed wrong. Try editing it: tick a to-do, delete a line, reword one, delete a "(?) …" question, or type a new line. Then run `/sync` in Telegram, or ask Claude to sync, and check your edits are picked up.
+
+## Do (manual setup)
+- [ ] **Deploy Phase 1 (neutralise):** it's merged and pushed, but deploying needs your OK. Say "deploy", or run on the server: `cd ~/ultron && docker compose -f deploy/docker-compose.yml up -d --build`. Backup taken first: `~/ultron/backups/pre-neutralise-2026-11-09.db`.
+- [ ] **After that deploy, check:** 🗂 Board → 🧠 About me shows a new line "Planning settings: plan up to 70% of free time · …" plus your expanded "Coaching style", new "Planning style" and expanded sport facts. Tonight's 21:00 plan should look like usual (same budget, 8-block limit, gym ≥90 min after padel, wind-down "journal or meditate"). To change a number, just ask Ultron (e.g. "make the gaps between blocks 15 min"): you'll get a 💡 card.
+- [ ] **Clean-up later:** delete `~/ultron/backups/pre-neutralise-2026-11-09.db` and the work folder (`git worktree remove ~/ultron-neutralise`) once Phase 1 has run fine for a few days.
+- [ ] **Redo Monday's plan:** tap ⏭ Skip on tonight's draft (it has no padel and a 07:00 wake), then ask Ultron for a new plan (~$0.01–0.03). It should show wake 06:30, routine 06:30–07:00, Padel 07:00–08:30.
+- [ ] **Run `git pull` on your PC before working there:** GitHub now has all the server's work, so your PC copy is behind.
+- [ ] **Try Ultron's memory:** ask in Telegram "what did I change on the Board yesterday?" or "did my workout change go through?" (~$0.01). It should check the log and answer from it, not guess.
+- [ ] **Read the log yourself (optional):** on the server, `docker exec ultron python -m ultron.log` (today), or add `--day 2026-11-05`, `--kind notion`, `--grep workout`, `--full`. Say if anything you expected is missing or the lines are hard to read.
+- [ ] **Clean-up later:** delete `~/ultron/backups/pre-activity-2026-11-05.db` once the log has run fine for a few days.
+- [ ] **Tap ✅ Apply on card 💡 "Workout mornings: Tue, Fri, Sat"** in Telegram (sent 5 Nov). The 📌 Workout entry on the Board changes only then; the Thu after-work one stays.
+- [ ] **Watch for ⚠️ lines in chat:** if Ultron ever says "No card was actually made", ask again. Tell Claude if a ⚠️ shows up when it shouldn't.
+- [ ] **Check the stuck "Replying to…" is gone:** Ultron sent "🧹 Reply box cleared." on 5 Nov. If the bar is still there, tap its ✕ and tell Claude.
+- [ ] **Try typing on the Board again:** type a tick box between two to-dos, then `/sync` (~$0.01). It should keep its spot and your words. Indent a line under a to-do and it becomes that to-do's grey note. A line that seems to belong under another heading stays put and gets "(?) Under X instead?": delete the (?) part to keep it there, or tell Ultron to move it.
+- [ ] **Clean-up later:** delete `~/ultron/backups/pre-typed-2026-10-25.db` once typed Board lines have behaved for a few days.
+- [ ] **Look at 📓 Log & journal on your 🗂 Board** (after the next sync, or send `/sync`): one folded heading per week, newest on top. "Week of Mon 19 Oct · 34 done" holds what you ticked off, then dropped to-dos struck through, then the week's day reviews and journal entries. Untick a line there to reopen it; delete a line to hide it from the Log. Say if anything is missing or shouldn't be there.
+- [ ] **Clean-up later:** delete `~/ultron/backups/pre-weeklog-2026-10-25.db` once the weekly Log has run fine for a few days.
+- [ ] **Answer Ultron's questions without swiping to reply:** the reply box no longer gets stuck. Your next plain message answers the latest question (within 30 min); a message that is itself a question goes to normal chat. Swipe-reply still works for an older question. Say if a message gets taken as an answer when it shouldn't.
+- [ ] **After that deploy, try a Board line:** type one in ✅ To-do, then `/sync`. It should keep your exact words and stay in To-do; a line typed right under a to-do that adds detail becomes a note on it.
+- [ ] **After deploy, answer Ultron in Telegram:** a ⚠️ card for Mon (workout vs Paddle, three AI career blocks vs Heathrow: tap Keep, as tonight's 21:00 plan redoes Mon) and a question about Paddle ending right as the GP call starts.
+- [ ] **Check tonight's 21:00 plan:** Mon wake 06:30 with a short routine, gym at 10:00 or later (after padel), nothing on Heathrow, at most 8 blocks, small admin batched. Tue wake 07:00.
+- [ ] **Look over 🚀 AI career on your 🗂 Board** (above ✅ To-do; moved up from "below" so the long To-do list doesn't bury it). Reword, delete or add steps there: your edits win. Say if anything from the roadmap is missing or filed in the wrong week.
+- [ ] **Tonight's 21:00 plan (Sun + Mon):** Monday should hold about 1h 50m of "AI career: …" blocks (BlueDot first), Sunday none (week 1 starts Mon 26 Oct). A draft short on roadmap time gets one automatic retry (about +$0.04).
+- [ ] **Learn the two ticks:** ticking an "AI career" block on 📅 Schedule logs the *session*; tick the *step* on the Board when it's finished. At 21:00, step blocks show ✅ (step finished) / ⏩ Progress (worked on it, carries on) / ❌ Missed.
+- [ ] **Want different daily time or habit days?** Now 110 min (45 min on days with under 6 h free), LinkedIn messages Tue/Sat, a weekly comment Wed, and applications Sat from 25 Jan. Tell Claude: they're set in `data/roadmaps/ai-career.json` on the server (not in git, so the PC has no copy).
+- [ ] **Check the next 21:00 review buttons:** each block's full title should sit on its own row, with ◐ Partly / ❌ Missed below. Say if any are still cut off.
+- [ ] **Check the repair** (after the next hourly sync, or send `/sync`): 📅 Schedule shows Call GP on Mon 08:30, not Sat; 🗂 Board shows the three lines under Danial (move the business cards one back if it isn't his).
+- [ ] **Try a heading and a weekday:** type a line under any project or area heading on the Board, and say "remind me to X on Monday" in chat (~$0.01). The line should stay under its heading, and the to-do should show "· on Mon" and only be planned for Monday.
+- [ ] **Confirm chat works again:** send Ultron any message in Telegram (~$0.01). If it still says "❌ Something went wrong reaching Claude", tell Claude.
+- [ ] **Tap Apply or Dismiss on the two new 💡 cards** in Telegram: a Morning routine block (Mon, Tue, Wed, Fri, Sat 06:00–06:35) and a Calm focus until 3 Nov (must: 20-min walk, 15-min meditation; cap 60%).
+- [ ] **Check the 📅 Schedule reads in time order** and the uncle meeting (Thu 09:45–10:45, incl. 15 min travel) and tennis (12:00–13:00) look right.
+- [ ] **Try the two-day planner:** `/plan`, the [Plan today] button under the brief, or just ask in chat "plan tomorrow". About $0.04–0.08 per draft. Tell Claude what it got wrong.
+- [ ] **How long does your daily video habit take?** Tell Claude or write it on the Board, so the planner times it right.
+- [ ] **Clean-up later:** delete `~/ultron/backups/pre-repair-2026-10-22.db*`, `pre-planner-2026-10-22.db`, `pre-dates-2026-10-23.db` and `pre-repair-2026-10-24.db` once the planner has run fine for a few days.
+- [ ] **Try a Reflect session** (live on the server): send `/reflect`, talk about something on your mind for a few messages, then `/done`. Check the "📓 Journaled: …" line, and the entry in 🗂 Board → 📓 Log & journal after the next sync. Also try writing something personal in normal chat and tapping [🧠 Make this a Reflect session]. About $0.20 for a 10-message session. Tell Claude what felt off (too many questions? tone? the mood it gave?).
+- [ ] **Optional clean-up later:** a one-off copy of the database from before the Reflect upgrade is at `~/ultron/backups/pre-reflect/` on the server. Delete it once Reflect has run fine for a few days (`rm -r ~/ultron/backups/pre-reflect`).
+- [ ] **Try the new rhythm and tell Claude what felt off:** tonight's 21:00 review and planning, tomorrow's 07:00 brief and 13:00 check-in, and Sunday's 19:00 weekly review. Too many messages? Wrong tone? Buttons unclear?
+- [ ] **Try an update in your 📥 Inbox:** write progress on something already on the Board, e.g. "spoke to 2 tradies, meeting Fri" or "GP booked". Within the hour, Ultron ticks, moves or reopens it, keeps your words in its notes and in 📓 Log, adds any follow-up ("Meeting with tradies, Fri"), and tells you in Telegram what it changed.
+- [ ] **Ultron now runs on the server:** DM the bot `/status` to confirm. Then over the next 2 nights check the 21:00 review and 07:00 brief arrive, and that no ❌ "Job 'backup' failed" message comes after 03:30. **Don't start the bot on your PC any more:** two copies fight over Telegram. The server's database is now the live one.
+- [ ] **Check your way back into the server:** in the OVH Control Panel open the VPS → **KVM**, and sign in as `ubuntu` with the emailed password (or set a new one with `sudo passwd ubuntu` over SSH). SSH no longer accepts passwords, so this console is your fallback.
+- [ ] **Back up your SSH private key** `C:\Users\PouriaReset\.ssh\id_ed25519` (password manager or USB). Never share it; only the `.pub` file is safe to share.
+- [ ] **Tonight at 21:00: first evening review, then planning.**
+  1. Tap ✅ / ◐ / ❌ for today's blocks, and ✓ for any habits you kept.
+  2. For a miss, choose ➡️ Tomorrow, ✂️ Shrink or 🗑 Drop, then say what got in the way.
+  3. Reply to "One line on today?" (or "skip").
+  4. Reply to the planning message with your priorities, then try ✏️ Edit once and ✅ Approve.
+  - Tell Claude what felt off. About $0.03–0.05.
+  - If you don't finish the review, it closes itself at 21:30 and planning carries on.
+  - `/review` runs it any time.
+- [ ] **When you have time: talk to Ultron and test it yourself** in Telegram (it's always on now). Try:
+  - a look-up ("what's on for Copperline?")
+  - a tick ("I changed the bedsheets")
+  - an add ("remind me to call mum Friday")
+  - "remember …", and check the [Undo] button
+  - a message starting with `!` (Sonnet)
+  - something personal, to see if it hands over to Sonnet by itself
+  - Then tell Claude what felt off (tone, length, too pushy or not pushy enough) so the prompts can be tuned.
+- [ ] **Telegram group (optional, any time):** create a private group with Topics (💬 Chat, 🧠 Reflect, 📋 Briefs), add @UltronOrg_bot and **make it an admin**.
+- [ ] **Test your keys:** whenever you add keys to `.env`, run `.\.venv\Scripts\python.exe -m ultron.check`. Each service shows ✅, or ❌ with what to fix. It only reads; nothing is changed anywhere. For Notion you can paste the whole page URL into `NOTION_ROOT_PAGE_ID`.
+- [ ] **Topics group ids:** once the group exists, send `/status` inside each group topic and copy the chat id → `TELEGRAM_GROUP_ID` and each topic id → `TELEGRAM_TOPIC_CHAT` / `_REFLECT` / `_BRIEFS`. Put them in `.env` **on the server** (`nano ~/ultron/.env`, then `docker restart ultron`), and in your PC's `.env` too if you want the copies to match.
+- [ ] **Move Apple Notes to Notion:** paste your existing notes into the 📥 Inbox whenever you like. Ultron sorts them onto the Board within the hour.
+
+## Waiting on review
+_None._
+
+## Placeholders in code
+- [ ] **Claude prices are hard-coded** in `ultron/ops/guard.py` (`PRICES`, checked 2026-10-19). Update them if Anthropic changes prices or you switch models; until then, unknown models are costed at the highest rate.
+
+## Done
+- [x] 2026-11-09: **Phase 1 (neutralise) built:** no personal rules, tone or names left in the code or tests. Your rules now live in your profile: facts (Coaching style expanded, new Planning style, sport fact expanded) and planning settings (70%, 10 min gaps, 8 blocks, 3 under 25 min, wake 30 min early, 30 min wind-down "journal or meditate", routine 35 min, gym 90 min after sport). A before/after snapshot of every prompt showed the same numbers and info reach Claude. 602 tests pass.
+- [x] 2026-11-09: **Phase 1 started:** a snapshot of every prompt Claude receives was taken from last night's backup, so the refactor can be checked line by line. Friends get a guide that uses the terminal a bit (they're capable, give them agency).
+- [x] 2026-11-09: **Packaging decisions:** your rules become profile settings (shown in 🧠 About me); public repo holds the code with a private repo for your personal files; you handle how friends send keys; no privacy note.
+- [x] 2026-11-09: **Packaging direction decided:** strip all personal info into your profile; email provider chosen at setup; friends hosted on your VPS with their own Anthropic keys; friends get every update; friends are non-technical; separate public repo (for CV) from private dev material.
+- [x] 2026-11-08: **The server can push to GitHub now:** the deploy key was re-added with write access, and the 43 commits that were only on the server are on GitHub. You no longer need to pull from the server on your PC and push.
+- [x] 2026-11-05: **Activity log built and deployed:** every message, button tap, item change (yours on the Board or Ultron's), Notion write, plan block, card, email read (summary only), job and Claude call is kept forever on the server, append-only. Ultron reads it in chat as its memory (`read_log`). Secrets are scrubbed; a deleted 🧠 Reflect session's words are blanked in the log too, matching Reflect's 90-day rule.
+- [x] 2026-11-05: **Fake "card sent" / "Applied" fixed (deployed):** chat can't claim a card or an Apply that didn't happen; a typed "apply" points you to the card's buttons (buttons only, your choice). Your Workout change was never saved on 4 Nov, so a real card was sent.
+- [x] 2026-10-25: **Typed Board lines stay put (deployed):** your lines keep their spot and words (no more "[ ] " in titles), indented lines become notes, and a line that seems misfiled stays and asks (your choice). You ticked the Halloween lines yourself at 18:46, so they're done and go into tomorrow's 📓 Log (titles cleaned of "[ ] "). "Arrange Halloween meetup with the boys" lost a stray "· overdue" in its title.
+- [x] 2026-10-25: **Weekly 📓 Log built and deployed:** done and dropped to-dos are kept in a folded heading per week, backdated to the start (week of 19 Oct). The 45 old email to-dos cleared on 20–21 Oct are hidden, as you chose; the 7 handled later stay.
+- [x] 2026-10-25: **Stuck Telegram reply box fixed and deployed:** questions no longer use ForceReply; the latest question stays open 30 minutes (your choice).
+- [x] 2026-10-25: **Grey note lines and one-off dates deployed:** a to-do's notes show as a grey line under it; one-offs on 📌 My schedule show their date ("Wed 25 Nov · 10:00–11:00 · Therapy session (Online)"). Therapy sessions marked online (no travel); "Get therapy to become more emotionally mature" moved to 🧭 Principles & notes. Two leftover "Halloween night at…" schedule entries removed (the options are the note on the Halloween to-do).
+- [x] 2026-10-25: **Therapy sessions added to 📌 My schedule:** Wed 25 Nov 10:00–11:00, Wed 2 Dec 10:00–11:00, Sat 12 Dec 08:30–09:15. The planner works around them.
+- [x] 2026-10-25: **Board fixes deployed:** 🚀 AI career is one folded toggle (redrawn, steps kept), typed lines keep your words and place, 💡 Ideas business-only.
+- [x] 2026-10-25: **Board repair:** "Madison rooftop, Dali club party" are now a note on "Talk with boys to see what Halloween motive is" (the two ideas removed); the Erin line has your words back ("Wait for Erin to send technical spec for uncle unit"); Get into robotics, Volunteer with animals and Scuba work moved from 💡 Ideas to ✅ To-do.
+- [x] 2026-10-25: **Planner fix deployed and data repaired** (Sleep 22:00–07:00, routine on waking, Paddle 07:00–08:30, Heathrow 10:30–12:20, padel = cardio fact). First sync ran fine and sent the Monday clash card and the Paddle/GP question.
+- [x] 2026-10-25: **Planner fix built and tested (536 tests, plus a dry run on a copy of the live data):** one wake time (the Sleep entry; the 05:30 bug fixed), routine on waking, ⚠️ clash cards and "how long?" buttons after every sync, padel = cardio with the gym 90+ min later, at most 8 blocks a day with batched admin, a track record and week capacity for the planner, chat can change weekly 📌 entries and set one-off times, and Board edits to 📌 lines change their times. Your answers: bed 22:00, wake 07:00 (06:30 on padel days), gym still on padel days, Heathrow 110 min.
+- [x] 2026-10-24: **AI career roadmap built and loaded:** 🚀 AI career section on the Board (status box, weekly stages, later phases folded), at least 110 min a day on the Schedule (45 on short days), session vs step ticks, roadmap habits paused until their phase, call-outs when a stage falls behind, and hours in the Sunday review. Steps are to-dos with a stage and order (as agreed), plus a link column for course pages. Backup: `~/ultron/backups/pre-roadmap-2026-10-24.db`.
+- [x] 2026-10-24: **AI career roadmap decided:** own always-open 🚀 AI career section on the Board (current phase open, later phases folded); 110 min on free days, 45 min Thu/Sun (10.5 h a week); week 1 starts Mon 26 Oct.
+- [x] 2026-10-24: **Data repaired:** one GP call on Mon 26 Oct 08:30–08:45 (Saturday's block dropped); three Danial lines moved back under Danial. Backup: `~/ultron/backups/pre-repair-2026-10-24.db`.
+- [x] 2026-10-23: **Dates and headings fixed and deployed:** a to-do can now be "on" a day (call GP Monday) or "by" a day (deadline), and the planner never moves an "on" one; chat and the sorter see the next 7 days' dates; a line typed under a Board heading stays in that project or area.
+- [x] 2026-10-23: **Review buttons readable:** block titles were cut to a few letters because three buttons shared a row. Now two rows per block (chosen layout).
+- [x] 2026-10-22: **Planner upgrade:** the Schedule is in time order; one-off appointments get their own time; two days planned at once from the whole to-do list; promises are never wiped by Approve; at 21:00 a ready draft arrives if you don't reply; chat can draft plans and sees the Schedule; custom focus modes take `must:` and `cap NN%`.
+- [x] 2026-10-22: **Data repaired:** Workout #124 restored, uncle meeting and tennis timed, duplicate dropped.
+- [x] 2026-10-22: **Planner upgrade go-ahead:** all 10 steps, with Claude's recommended defaults. Untimed lines go in a "Not timed yet" group before Wind down; an appointment with no end blocks 60 min ("length guessed"). Friday: the uncle meeting is ~1h with 15 min travel each way, court is 1h, and the tennis to-do is the same booking.
+- [x] 2026-10-22: **Chat fixed and deployed** (it broke on 21 Oct: the chat tools had 25 optional fields, the API allows 16).
+- [x] 2026-10-22: **Bug sweep and fixes, deployed:**
+  - **Errors never go quiet:** a crashed command or button now answers "❌ Something went wrong", and `/sync` says what failed instead of stopping after "Syncing…".
+  - **Fewer repeat alerts:** a job failing the same way alerts once, then at most every 6 hours, and you get a ✅ when it works again (last night it sent the same ❌ four times).
+  - **Chat knows Ultron's health:** ask "why did the sync fail?" and it explains the real error instead of guessing.
+  - **Long messages:** split at line breaks instead of mid-word, and long messages with buttons (weekly review, plans) are no longer cut off.
+  - **Smaller fixes:** a tool error no longer sinks a whole chat reply; dates use London time even if the server clock differs; Notion's deprecated `after` option replaced; background Board updates can't be dropped mid-run.
+  - No Claude cost. 413 tests passing.
+- [x] 2026-10-22: **Notion sync fixed and deployed (all of `main`, including suggestion cards):** long text is now split into 2,000-character pieces, so the 21 Oct 📓 Log entry is on the Board and the hourly sync works again (first run 01:28, no errors). Each Notion warning now prints once. 396 tests passing. A copy of the database from just before the deploy is at `~/ultron/backups/pre-deploy-2026-10-22.db`; it isn't cleared automatically, so delete it once you're happy (`rm ~/ultron/backups/pre-deploy-2026-10-22.db`).
+- [x] 2026-10-21: **Phase 6 step 4, suggestion cards:** in Reflect or chat, Ultron proposes lasting changes as 💡 cards with [✅ Apply] [✏️ Tweak] [Dismiss]: facts, habits (incl. pause until a date), goals, focus (switch or new mode), ritual times (applied and re-timed straight away) and coaching style. One per reply, three a day, dismissed ideas held back 30 days. Nothing changes before Apply. 389 tests passing. **Live on the server since 22 Oct** (your choice: deployed with the Notion fix, before step 5's undo).
+- [x] 2026-10-21: **Phase 6 step 3, journal entries:** closing a Reflect session (`/done` or 30 minutes quiet) writes a 📓 entry on the Board as neutral notes, e.g. "Reflect: work and tiredness · mood 2/5" with themes and key points; Claude judges the mood. The Sunday review shows "Themes from your reflections". About $0.01 per session. Steps 1–3 are live on the server (database upgraded, copy taken first). 366 tests passing.
+- [x] 2026-10-21: **Phase 6 step 2, what the coach knows:** in a Reflect session the coach reads your last 14 days of 📓 Log (day and week reviews, what got in the way, journal entries), recent call-outs and past session summaries, and names patterns with dates and counts. When you write something personal in normal chat, the reply gets a [🧠 Make this a Reflect session] button that carries the conversation over. About $0.003 more per Reflect message. Goes to the server after step 3. 360 tests passing.
+- [x] 2026-10-21: **Phase 6 step 1, Reflect sessions:** `/reflect` opens a coaching session in your DM, `/done` or 30 minutes of quiet closes it. Each session starts fresh; conversations are kept 90 days on the server, never in Notion. Not on the server yet. 353 tests passing.
+- [x] 2026-10-21: **Phase 6 choices made:** `/reflect` … `/done` plus a 30-minute auto-end; cards may change anything; offers to talk after a rough day and weekly (once a day at most); changes listed by `/undo-change` and in 📓 Log; Sonnet summaries; `/forget` now. Written into PLAN.md § Build phases.
+- [x] 2026-10-21: **Day review shows unplanned ticks:** the 📓 day review now has an "Also done:" line listing to-dos ticked that day (on the Board, in chat or by an Inbox update) that weren't in the plan. The headline ("3 of 5 done") still counts the plan only. Live on the server. No Claude cost.
+- [x] 2026-10-21: **Nightly backups on:** at 03:30 Ultron saves `~/ultron/backups/YYYY-MM-DD/` on the server with a copy of the database and a JSON export of 📥 Inbox, 🗂 Board and 📅 Schedule, keeping 14 days. A test run worked (512 KB database, 393 Notion blocks, all 205 items intact). How to restore: README § Running on the server. No Claude cost. 343 tests passing. **Deploy done; next is Phase 6 (Reflect and personalisation).**
+- [x] 2026-10-21: **Ultron is live on the server** (Docker, restarts itself after crashes and reboots). Your `.env` and database were copied across unchanged; Telegram, Claude, Notion and Yahoo all ✅ from there. How to update it, read logs and restart: README § Running on the server. **Next: nightly backups.**
+- [x] 2026-10-21: **Repo cloned on the server** to `~/ultron` with a GitHub deploy key (read-only at first, write access since 8 Nov; "ultron-vps-deploy" under the repo's Settings → Deploy keys; delete it there to cut the server off). The server can pull but not push. Only pushed commits reach it.
+- [x] 2026-10-21: **Docker installed on the server** (`15.235.103.145`, Ubuntu 24.04): Docker 29.9 and Compose v5.6, starting on boot. Claude can now SSH in from here with your key.
+- [x] 2026-10-21: **Server locked down:** updated, SSH key login works, password and root logins over SSH off, firewall on (SSH only), automatic security updates on (restarting itself at 04:00 when an update needs it), clock set to UK time.
+- [x] 2026-10-21: **VPS bought:** OVHcloud VPS-1 2027, Canada · Beauharnois, no commitment. Waiting for OVH to set it up.
+- [x] 2026-10-21: **Phase 5 (rituals) complete:** evening review, ☑️ Today's habits with streaks, morning brief, weekly review, 📓 Log, commitments, call-outs, midday check-in and `/easy`. A dry run on a copy of your data looked right, and habit buttons got clearer labels. README and PLAN updated. 336 tests passing. **Next: deploy to the OVH VPS.**
+- [x] 2026-10-21: **Phase 5 · Step 6 done: accountability extras.**
+  - **Pattern call-outs** in the evening review: a to-do pushed back 3+ times, or a goal with nothing done for 7 days, gets [⏰ First thing tomorrow] [🗑 Drop] [Keep]. At most 2 a night, each item at most every 3 days. Paused goals, weekly objectives and "Still needed?" items are skipped. They're listed in the weekly review too.
+  - **Midday check-in at 13:00:** what's done, not ticked and still to come, with [👍 On track] [🔁 Replan]. Turn it off with `MIDDAY_CHECKIN=false` in `.env`.
+  - **`/easy`** silences call-outs and check-ins for the day.
+  - No Claude cost. 336 tests passing.
+- [x] 2026-10-21: **Phase 5 · Step 5 done: weekly review (Sunday 19:00, Sonnet, about $0.03–0.05).**
+  - The numbers: commitments done by day and area, habits kept/due with streaks, money out / due soon (next 14 days).
+  - Sonnet adds wins, misses, themes from your 📓 Log, a suggested focus and 2–4 objectives.
+  - [🎯 Add objectives] puts them in Goals as "This week: …" (last week's are closed). [🧭 Use focus] switches mode. [Skip] changes nothing.
+  - It's logged in 📓, and `/weekly` runs it any time.
+  - 326 tests passing.
+- [x] 2026-10-21: **Phase 5 · Step 4 done: morning brief at 07:00.**
+  - Contents: today's fixed schedule and free time, the plan, the top 3, overdue items, and important email since 21:00, plus one Haiku line in your tone and a [🔁 Replan today] button.
+  - If the bot wasn't running at 07:00, it's sent at startup (until noon). `/brief` gets it any time.
+  - About $0.0002 a day.
+  - Also fixed: on work days the 30 minutes before you leave were counted as free time.
+  - 319 tests passing.
+- [x] 2026-10-21: **Phase 5 · Step 3 done: evening review.**
+  - At 21:00: ✅ / ◐ / ❌ for each block not yet ticked, then one-tap habit ticks.
+  - Each miss gets ➡️ Tomorrow (counts as pushed back), ✂️ Shrink (a 15-minute first step tomorrow) or 🗑 Drop, then "what got in the way?".
+  - Then a one-line reflection, the 📓 Log entry, and planning tomorrow.
+  - Unfinished reviews close themselves at 21:30. `/review` runs it on demand. No Claude cost.
+  - 312 tests passing.
+- [x] 2026-10-21: **Moved out of habits, still on the Board:** "12-hour work days for 30 days" is now a 🎯 Goal (still paused until 3 Nov), and "Journal in the third person" is in 🧭 Principles & notes.
+- [x] 2026-10-21: **Phase 5 · Step 2 done: ☑️ Today's habits.**
+  - An always-open checklist at the top of the Board, with the habits due today.
+  - Ticking one records "kept today" (limits count as "kept to it"), and it clears itself the next morning. A late tick after the last sync still counts for that day.
+  - Streaks show as "· 🔥 6" and a missed day resets them.
+  - 302 tests passing.
+- [x] 2026-10-21: **Phase 5 decisions:** two messages at 21:00 (review, then planning), morning brief at 07:00, midday check-in at 13:00 every day.
+- [x] 2026-10-21: **Phase 5 · Step 1 done: 📓 Log and commitments.**
+  - Each day gets one collapsible 📓 Log entry, e.g. "21 Oct · Day review: 3 of 5 done, 1 partly, 1 skipped · Balanced", with the details and your reflection inside. The evening review (Step 3) writes it.
+  - Telling Ultron "I'll call Erin tomorrow" makes a to-do and a commitment for that day.
+  - Blocks can be marked partly done or skipped on the Schedule.
+  - 292 tests passing.
+- [x] 2026-10-21: **Fixed: follow-ups in Inbox updates were lost.** "Collected the £1k from Saj, loaning him another £1.5k" ticked the old to-do but filed the new loan only as a note. Follow-ups are now part of the update itself, so they can't be dropped. Added the missing to-do: **Collect £1.5k from Saj, due Wed 28 Oct**. 285 tests passing.
+- [x] 2026-10-21: **Phase 4 (📅 Schedule + planner + focus modes) complete:** the Schedule page, free time and the 70% cap, focus modes, ranking, 21:00 suggestions with a priorities question, the Sonnet planner with Approve/Edit/Skip, two-way ticks, `/replan`, and progress updates via the Inbox. README and PLAN updated. 283 tests passing. Tonight's 21:00 run is the first real use.
+- [x] 2026-10-21: **Progress updates via the Inbox:** notes about existing items now update them instead of adding duplicates. Status and due date change as the note says (moving a date counts as "pushed back"), the item's wording stays yours, the note goes into its details and 📓 Log, and follow-ups become new to-dos. Recently ticked items (last 7 days) can be reopened. 283 tests passing.
+- [x] 2026-10-21: **Server chosen:** OVHcloud VPS-1 2027 (IPv4 included), in Europe, with no commitment.
+- [x] 2026-10-21: **Phase 4 · Step 7 done: the Schedule is two-way, and `/replan` works.**
+  - Ticking a block on 📅 Schedule ticks its Board to-do, and ticking on the Board ticks the block.
+  - Deleting a block removes it; rewording renames it.
+  - `/replan [what changed]` reshuffles the rest of today: done blocks stay, and earlier unticked ones are kept as misses for the evening review.
+  - 275 tests passing.
+- [x] 2026-10-21: **Decisions:**
+  - Accountability: all four behaviours (commitments, follow-ups on misses, pattern call-outs, midday check-in).
+  - The ☑️ Today's habits checklist comes with Phase 5; limits are ticked as "kept to it".
+  - Deploy straight after Phase 5.
+  - "My preferences" in `CLAUDE.md` is filled in from your answers. Edit it freely.
+- [x] 2026-10-21: **Habits tidied:** ~~Merged the morning habits~~ (undone: they stay separate) → now three habits: "Morning routine · water, wash face and brush teeth", "Morning routine · 10 mins mindfulness (meditation)", "Morning routine · write 10 things I'm grateful for (journaling)". Sleep now ends at 06:00, so the "wake 6am" habit and the planner agree. "12 hours work a day" is paused until 3 Nov (with a to-do to restart it on 4 Nov). The 15-minute meditation is part of the evening wind-down.
+- [x] 2026-10-21: **Newly processed notes now go to the top of ✓ Processed** (each batch stays in the order you wrote it). The 145 already there are left as they were.
+- [x] 2026-10-21: **Dry run of the 21:00 suggestions** ($0.008): sensible picks (GP booking, Agent Opus deadline, tradies). Fixed: it showed an internal number "(#129)" and didn't count the workout's time.
+- [x] 2026-10-21: **Phase 4 · Step 6 done: the planner.** Your reply, or `/plan [today|tomorrow] [priorities]`, leads to a Sonnet draft. Code checks it fits (free time, 10-minute gaps, the focus cap): it gets one retry, then anything that doesn't fit is cut and listed. ✅ Approve writes to 📅 Schedule and replaces earlier blocks (done ones are kept), ✏️ Edit asks what to change, ⏭ Skip discards it. 268 tests passing.
+- [x] 2026-10-21: **Morning routine is now a daily habit** (it was a one-off to-do).
+- [x] 2026-10-21: **Phase 4 · Step 5 (code) done: 21:00 nightly message.** 2–3 "moves the needle" suggestions with reasons, then "What are your priorities for tomorrow?". Reply to that message (Telegram opens the reply box) or say "skip". One nudge at 21:45; if the PC was off at 21:00, it's sent when the bot starts, before 22:30. Change the times with `NIGHTLY_TIME` / `NIGHTLY_NUDGE_MINUTES` in `.env`. 256 tests passing.
+- [x] 2026-10-21: **Phase 4 · Step 4 done: ranking.** To-dos are scored by urgency (overdue, then due today, then this week), how often they've been pushed back, how long they've waited, and the focus weight. Each comes with plain reasons. "Still needed?" items always come last. 245 tests passing.
+- [x] 2026-10-21: **Phase 4 · Step 3 done: focus modes.** Seven built-in modes, plus your own written on the Board as "Focus mode Calm: …". Use `/focus`, `/focus health 2w` (goes back to the previous mode after), or `/focus health 60 wealth 40`. Current focus: **Balanced**, shown on the Board. Coaching style saved: direct, blunt and analytical (straight but never harsh on grief or stress). Your 2-week mindfulness and stress-relief note goes to the planner. 238 tests passing.
+- [x] 2026-10-21: **Phase 4 · Step 2 done: free time.** Work days block 06:30–18:30 (commute included) and you wake at 06:00. Workouts are left for the planner. The last 30 minutes before sleep are wind-down. The planner may fill at most 70% of free time, with 10-minute gaps. Saved as facts: your morning jog then weights preference, and the wind-down routine. 226 tests passing.
+- [x] 2026-10-20: **Phase 4 · Step 1 done: 📅 Schedule page.** Full-timeline layout: Today and Tomorrow show 🔒 fixed lines and planned blocks in time order, and Rest of the week is collapsible with one line per day. Written in place, rolls forward daily, and costs nothing when unchanged. 214 tests passing.
+- [x] 2026-10-20: **Phase 4 decisions:** 21:00 nightly "what moves the needle" suggestions plus a priorities question (and `/plan` any time); Sonnet planner; Claude estimates durations; no meal blocks for now; custom focus modes in plain text on the Board. Saved as a fact: you skip breakfast (coffee only) and eat lunch and dinner.
+- [x] 2026-10-20: **Email backfill finished:** all 647 emails from the last 30 days were read (42 important, 224 FYI, 327 promos, 54 automated) for $0.10 in total. The 3 newest important ones were pinged.
+- [x] 2026-10-20: **Phase 3 (email triage) complete:** read-only Yahoo reading, triage, email to-dos on the Board, pings, `/inbox`, email search in chat, Sent-folder reply tracking. README and PLAN updated. 201 tests passing.
+- [x] 2026-10-20: **Email fixes after the first batch:** to-dos from emails more than a week old get a "Still needed?" question instead of a stale overdue date. Replies, forwards and matching subjects now update one to-do; the 5 Teal Court leak to-dos were merged into 1 ("Contact Brent Leasehold Team" went into it too, so re-add it if you want it separate). 201 tests passing.
+- [x] 2026-10-20: **First real email run started (no blocklist).** First 100 of 647 emails: 12 important, 10 Board to-dos, $0.016. The rest arrive 100 per hour; expect about $0.10 in total.
+- [x] 2026-10-20: **Sender blocklist:** none for now. Add senders to `EMAIL_BLOCKLIST` in `.env` any time.
+- [x] 2026-10-20: **Yahoo connected:** app password works (`ultron.check` ✅) and the Sent folder was found.
+- [x] 2026-10-20: **Phase 3 · Step 5 (code) done:** mail runs before the notes in the hourly sync and in `/sync`. The Sent folder is read for headers only, to clear "waiting for your reply". 194 tests passing.
+- [x] 2026-10-20: **Phase 3 · Step 4 done: seeing your email.** One Telegram ping per sync for new important mail (held during quiet hours 22:30–07:00, nothing older than a day), `/inbox` for the last 24 hours, and chat can search email summaries and knows who's waiting for a reply. 187 tests passing.
+- [x] 2026-10-20: **Phase 3 · Step 3 done: email to-dos on the Board.** Shown in your To-do list as e.g. "Pay council tax · £120.00 · 📧 Council · due Sun 01 Nov". Duplicates are caught with simple matching (same sender + amount, or near-identical wording). A "payment received" email adds a "(?) … Tick it?" question and never ticks anything itself. 173 tests passing.
+- [x] 2026-10-20: **Phase 3 · Step 2 done: email triage.** Categories: important (money due, deadlines/appointments, real people → ping), FYI, promo (counted only), ignore. Summaries kept 90 days, never the email text; no codes/passwords/card numbers in summaries; possible phishing flagged. 156 tests passing.
+- [x] 2026-10-20: **Phase 3 · Step 1 done: reading mail safely.** Read-only (mail stays unread), only new mail, blocklisted senders never downloaded, bodies cleaned and trimmed to 3,000 characters. Tested on a fake mailbox; 143 tests passing.
+- [x] 2026-10-20: **Phase 3 (email) decisions:** mail is checked with the hourly sync; a Telegram ping only for important or action emails; email to-dos go in the normal To-do list tagged 📧; the first run reads the last 30 days.
+- [x] 2026-10-20: **Phase 2 (Notion Inbox → Board) complete:** sorting, the Board, hourly sync, onboarding and chat. Leftover code removed and docs updated. 125 tests passing.
+- [x] 2026-10-20: **Phase 2 · Step 7 done: chat agent live.**
+  - Haiku by default with a think-harder hand-off to Sonnet; `!` forces Sonnet; Reflect uses Sonnet.
+  - Tools: look up, add, update, tick off, remember with [Undo].
+  - Live check: Haiku $0.0004, Sonnet $0.019. Prompt caching works. 125 tests passing.
+- [x] 2026-10-20: **Thursday workout moved to after work** (from about 18:30). Mon/Tue/Fri/Sat workouts stay in the morning.
+- [x] 2026-10-20: **Your schedule is set up** ($0.0015) and on the Board: work Thu & Sun 07:00–18:00, workouts 5 mornings, sleep 22:00–07:00, Sunday rest day. Two bugs found on this first real use were fixed (`0e9921a`).
+- [x] 2026-10-20: **Phase 2 · Step 6 done: onboarding.**
+  - 5 fixed questions (free), then one Haiku call to structure the answers, with at most one round of follow-ups.
+  - You confirm with buttons before anything is saved, and progress survives a restart.
+  - Entries show on the Board as e.g. "Mon, Wed, Fri · 07:00–08:00 · Gym". 112 tests passing.
+- [x] 2026-10-20: **Phase 2 · Step 5 done: hourly sync.**
+  - Your 140 notes were moved into ✓ Processed, with no Claude call and nothing lost.
+  - A quiet hour now costs about 2 seconds and no money.
+  - `/sync` runs it on demand. Missed lines are retried once, then parked and you're told. 98 tests passing.
+- [x] 2026-10-20: **Planning goes to a Notion 📅 Schedule page instead of Apple Calendar:**
+  - Today and tomorrow are time blocks; the rest of the week is listed per day. It's two-way with the Board.
+  - iCloud is dropped for now (maybe read-only later), so no Apple app-specific password is needed.
+- [x] 2026-10-20: **Sync stays hourly** (about $0.15/month at most; Claude is only called when something changed).
+- [x] 2026-10-20: **Phase 2 · Step 4 done: your Board is live.**
+  - 120 items written: 5 projects, 66 tasks, 12 habits, 4 goals, 28 ideas, 11 principles & notes, 1 log.
+  - All 140 lines were sorted, including 2,000 calories/day. Sort cost $0.0094.
+  - A second sync changed nothing. 89 tests passing.
+- [x] 2026-10-20: **Board behaviour decided:**
+  - To-do is always open; other sections collapse.
+  - Ticked to-dos clear after the evening review (until then, after midnight).
+  - Lines typed on the Board are sorted like Inbox notes.
+- [x] 2026-10-20: **Phase 2 · Step 3 done:** the sorter is built and tested (70 tests). Real run on your 140 lines cost $0.0084. Duplicates are merged, tennis is attached to George, habits/goals/tasks are fixed, and every task has an area. The one missed line was caught by the safety net, and a prompt rule now targets it.
+- [x] 2026-10-20: **Anthropic workspace key works:** all of Telegram, Claude and Notion are ✅.
+- [x] 2026-10-20: **Board design refined after reading your real notes:**
+  - To-dos are grouped under project/person, then by life area.
+  - A new 🧭 Principles & notes section holds mantras and frameworks.
+  - DONE items go to the log; stale ones are asked about.
+- [x] 2026-10-20: **Prototype sort of your Inbox:** 1 Haiku call, $0.0064. Produced 5 projects, 62 tasks, 10 habits, 13 goals, 27 ideas, 7 principles and 4 references, with 6 questions for you. Nothing was written to Notion.
+- [x] 2026-10-20: **Phase 2 · Step 2 done:** reads new Inbox text (any block type, nested lines, above or below ✓ Processed), skips unchanged Inboxes and already-handled jottings, and reports images/files without touching them. 58 tests passing; checked on your real (empty) Inbox.
+- [x] 2026-10-20: **Keys in `.env`:** Telegram ✅ (@UltronOrg_bot) and Notion ✅ (integration "UltronAI"). Claude still needs a workspace key (see Do).
+- [x] 2026-10-20: **Notion pages created and verified for real:** 📥 Inbox https://www.notion.so/3ffa7060f22081f8a00bfc38ecefa519 · 🗂 Board https://www.notion.so/3ffa7060f22081acb1b0e1ad835f032c. Re-running setup changes nothing.
+- [x] 2026-10-20: **Phase 2 · Step 1 done:** creates or finds the 📥 Inbox (hint + ✓ Processed) and 🗂 Board on startup or via `python -m ultron.setup`. Verified on your real Notion.
+- [x] 2026-10-20: **Notion simplified to 2 pages:**
+  - **📥 Inbox:** you write here only, never via Telegram.
+  - **🗂 Board:** Ultron organises it into collapsible sections.
+  - Ultron checks the Inbox hourly and before each brief, and folds processed jottings into a "✓ Processed" section. No `/n` command.
+- [x] 2026-10-20: **First-run onboarding added to the plan** (PLAN.md § 0): Ultron asks for your work days, workouts, sleep and immovable commitments, and writes them to 📌 My schedule.
+- [x] 2026-10-20: **Memory design decided:**
+  - **Facts database** (one row per fact) plus a small Profile & Focus page.
+  - **"Remember X"** saves straight away with an [Undo] button; facts Ultron notices itself need an Apply card.
+  - **Chat history:** Ultron re-reads the last 20 messages plus a running summary.
+- [x] 2026-10-20: **Chat model decided:** Haiku 5.5 by default, escalating to Sonnet 5.5 for harder or personal conversations. The routing rule gets designed in Phase 2 · Step 3.
+- [x] 2026-10-20: **README explains where your data lives** and how Ultron remembers you.
+- [x] 2026-10-20: **Phase 1 (Foundation) complete:** `README.md` setup guide, LF line endings via `.gitattributes`, 39 tests + lint passing. Next up is Phase 2 (Notion + notes + chat agent).
+- [x] 2026-10-20: **Phase 1 · Step 4 done:** `python -m ultron.check` tests Telegram, Claude, Notion, Yahoo and iCloud (read-only), with friendly fix-it messages. 39 tests passing.
+- [x] 2026-10-19: **Phase 1 · Step 3 done:** Telegram bot (owner-only, topic routing, `/help` `/status` `/usage`, placeholder replies), app-ready core with a test enforcing it, 28 tests passing.
+- [x] 2026-10-19: **App direction decided:** personal-first with an app-ready core. A personal iPhone app (Expo + TestFlight) comes later as phase 9. Accountability added to the plan (§ 15).
+- [x] 2026-10-19: **Phase 1 · Step 2 done:** SQLite state (`ultron/state.py`), cost guard with $20 cap + 80% warning, job retries + failure alerts (`ultron/ops/guard.py`), 11 tests passing.
+- [x] 2026-10-19: **Decided:** only Telegram + Anthropic keys required; models Haiku 5.5 (fast) / Sonnet 5.5 (smart); plain `sqlite3`; all packages already on their newest releases.
+- [x] 2026-10-19: **Phase 1 · Step 1 done:** project skeleton, dependencies pinned, settings loader + `.env.example`.
+- [x] 2026-10-19: **Logged in to GitHub CLI.**
+- [x] 2026-10-19: **TODO.md is now committed** to the private repo so you can read it on other devices. Keep secrets out of it.
+- [x] 2026-10-19: **Phase 1 setup decided:** private repo `ultron`, Python 3.13, pip + venv, GitHub CLI installed, local git repo created with first commit.
+- [x] 2026-10-19: **Plan approved** and saved as `PLAN.md`.
+- [x] 2026-10-19: **Stack chosen:** Yahoo mail (read-only), iCloud Calendar, Notion, Telegram, Python, VPS.

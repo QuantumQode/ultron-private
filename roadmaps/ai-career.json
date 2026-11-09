@@ -1,0 +1,183 @@
+{
+  "project": "AI career",
+  "title": "🚀 AI career",
+  "goal": "First role in AI governance or AI evaluation, then on to the ethics & psychology side",
+  "target": "within 6–12 months (by Oct 2027)",
+  "area": "Career",
+  "starts": "2026-10-26",
+  "daily_minutes": 110,
+  "short_minutes": 45,
+  "short_below": 360,
+  "notes": "About 10.5 h a week. Course reading and sessions on weekday evenings; portfolio project work in longer blocks, best in the morning after the workout (deep work); writing (the learning log) about 20 min a day; networking an evening event every fortnight; from month 4, a fixed weekly applications slot. On a short (work) day, keep it light: reading, the learning log or a LinkedIn message.",
+  "phases": [
+    {
+      "phase": 1,
+      "title": "Foundations",
+      "span": "weeks 1–4",
+      "starts": "2026-10-26",
+      "ends": "2026-11-22",
+      "goal": "Learn the field's language and get into a structured course, so you can talk credibly and add real lines to your CV.",
+      "checkpoint": "course started, one tiny eval run, one post published",
+      "stages": [
+        {
+          "title": "Week 1 — Set up",
+          "due": "2026-11-01",
+          "steps": [
+            {"title": "Apply for BlueDot Impact's AGI Strategy course", "link": "https://bluedot.org", "details": "The entry course and the gateway to their Frontier AI Governance course. Free; apply now even if the next start is weeks away."},
+            {"title": "Rewrite your LinkedIn headline: \"Technical analyst moving into AI governance & safety | Python | LLM evaluation\""},
+            {"title": "Set up a GitHub repo ai-safety-portfolio and a Substack or LinkedIn newsletter"},
+            {"title": "Start a learning log: one paragraph a day on what you read", "details": "It becomes your writing material. The daily habit \"AI career: learning log\" keeps it going."}
+          ]
+        },
+        {
+          "title": "Week 2 — Governance basics",
+          "due": "2026-11-08",
+          "steps": [
+            {"title": "Read a plain-English summary of the EU AI Act", "details": "Risk tiers, what \"high-risk\" means (recruitment is one), and the obligations."},
+            {"title": "Read the NIST AI Risk Management Framework overview", "details": "Govern, Map, Measure, Manage."},
+            {"title": "Read the UK's approach to AI regulation and what the UK AI Security Institute does"},
+            {"title": "Check your eligibility for BPSS/SC security clearance", "link": "https://job-boards.greenhouse.io/aisi/jobs/4911480101", "details": "UK AI Security Institute roles need it; check early given the AWS vetting issue."}
+          ]
+        },
+        {
+          "title": "Week 3 — Ethics and psychology basics",
+          "due": "2026-11-15",
+          "steps": [
+            {"title": "Take the free University of Helsinki \"Ethics of AI\" online course", "details": "A few hours a week; can run past week 3."},
+            {"title": "Read up on automation bias, anthropomorphism, trust calibration, persuasion and manipulation, and sycophancy in LLMs"},
+            {"title": "Read one AI lab's model guidelines (Anthropic's constitution or OpenAI's model spec)", "details": "Note what they say about honesty and user wellbeing."}
+          ]
+        },
+        {
+          "title": "Week 4 — Technical evaluation basics",
+          "due": "2026-11-22",
+          "steps": [
+            {"title": "Work through the Inspect tutorial (the UK AI Security Institute's eval framework, Python)"},
+            {"title": "Run one tiny eval on a model via API", "details": "For example 20 questions with and without user pushback."},
+            {"title": "Write and publish your first post: \"What I learned in my first month studying AI governance\""}
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "title": "Portfolio",
+      "span": "weeks 5–12",
+      "starts": "2026-11-23",
+      "ends": "2027-01-17",
+      "goal": "Three public pieces of work that prove you can do the job; each fills a placeholder on your CV. About 10–12 hours a week.",
+      "checkpoint": "Project 1 published, Project 2 drafted, CV placeholders replaced with real content",
+      "stages": [
+        {
+          "title": "Project 1 — LLM sycophancy and bias evaluation (weeks 5–8)",
+          "due": "2026-12-20",
+          "steps": [
+            {"title": "Pick 2–3 models you can access via API", "details": "Budget around £20–40 in credits."},
+            {"title": "Build the sycophancy prompt set (~50)", "details": "Factual questions, then the \"user\" pushes back (\"I'm pretty sure that's wrong\"). Measure how often a correct answer flips."},
+            {"title": "Build the bias prompt set (~50)", "details": "Identical CVs with only the name changed; the model rates the candidates. Measure differences in scores."},
+            {"title": "Run them with Inspect or a Python script; save the results as CSV"},
+            {"title": "Chart the results and write the README", "details": "Method, results, limitations, and what you'd do next."},
+            {"title": "Publish on GitHub with a 600–900 word write-up"}
+          ]
+        },
+        {
+          "title": "Project 2 — AI risk assessment of a real product (weeks 9–10)",
+          "due": "2027-01-03",
+          "steps": [
+            {"title": "Pick a public AI hiring or HR tool (CV screening, video interview scoring)"},
+            {"title": "Classify it under the EU AI Act and map its risks with the NIST AI RMF", "details": "Public information only: fairness, transparency, human oversight, data protection."},
+            {"title": "Write a 3–4 page assessment with a risk table and recommended mitigations", "details": "Like a consultant would."},
+            {"title": "Publish it as a PDF on your portfolio"},
+            {"title": "Replace the CV placeholders with Projects 1 and 2"}
+          ]
+        },
+        {
+          "title": "Project 3 — Psychology essay (weeks 11–12)",
+          "due": "2027-01-17",
+          "steps": [
+            {"title": "Read 4–6 real papers or summaries on why people over-trust chatbots", "details": "Topic idea: \"Why people over-trust chatbots: automation bias, anthropomorphism, and what designers should do\". Cite them properly."},
+            {"title": "Write the essay: 1,200–1,500 words, ending with practical recommendations"},
+            {"title": "Publish on Substack or LinkedIn and share it in AI safety communities"}
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "title": "Network and visibility",
+      "span": "months 2–6",
+      "starts": "2026-11-23",
+      "ends": "2027-04-25",
+      "goal": "Be known to 20–30 people in London's AI safety and governance scene. Many roles here fill through referrals and fellowships, not job boards.",
+      "checkpoint": "at least one person has referred you, or invited you to apply for something",
+      "stages": [
+        {
+          "title": "Network and visibility (months 2–6)",
+          "due": "2027-04-25",
+          "steps": [
+            {"title": "Join the BlueDot alumni community and AI safety Slack/Discord groups; post your projects there"},
+            {"title": "Apply for BlueDot's Frontier AI Governance course", "link": "https://www.longtermwiki.com/resources/b234082cb15b162b", "details": "Aimed at technical people considering governance work. Months 2–4; needs the AGI Strategy course first."},
+            {"title": "Look into LISA (London Initiative for Safe AI) visiting/affiliate membership and events", "link": "https://london-safe-ai.notion.site/LISA-Membership-Overview-ae4a2a305db642c6a7d9822979c2ee60"},
+            {"title": "Book 1–2 London events a month", "details": "AI safety and governance meetups, Ada Lovelace Institute and Alan Turing Institute public events, LISA events if open."},
+            {"title": "Find one mentor 2–5 years ahead in AI governance or evaluation", "details": "Offer to help with a small task in return."},
+            {"title": "Volunteer or contribute: an open-source eval repo, a research project needing a Python person, or an AI policy group"},
+            {"title": "Post your learning log publicly once a month"}
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "title": "Applying and interviewing",
+      "span": "months 4–9",
+      "starts": "2027-01-25",
+      "ends": "2027-08-01",
+      "goal": "Land your first role in governance, evaluation or trust & safety. Expect 40–80 applications; quality matters more than volume.",
+      "checkpoint": "an offer in governance, evaluation or trust & safety, or a fellowship place",
+      "stages": [
+        {
+          "title": "Applying and interviewing (months 4–9)",
+          "due": "2027-08-01",
+          "steps": [
+            {"title": "Set up the applications tracker: role, date, contact, stage, outcome", "details": "Review weekly what's getting replies."},
+            {"title": "Make a target list of employers", "details": "UK AI Security Institute (Societal Impacts team; needs BPSS/SC), Ada Lovelace Institute, Alan Turing Institute, Google DeepMind / Anthropic / OpenAI London, Apollo Research and other eval startups, Big 4 AI assurance and risk teams, Faculty, tech trust & safety teams. Check each one's current vacancies."},
+            {"title": "Tailor a CV profile and cover-letter base that leads with your best project", "details": "Every application: match the profile to the job, lead with the most relevant project, and name one specific thing about the organisation's AI work."},
+            {"title": "Apply for fellowships and programmes that take career changers", "details": "Often the best door in."},
+            {"title": "Apply for the Vista Institute for AI Policy course", "link": "https://forum.effectivealtruism.org/posts/XibsnDt44qQnWSs3r/comparing-ai-policy-courses", "details": "Legal and policy-focused; recommended after BlueDot. Months 4–8."},
+            {"title": "Interview prep: know the EU AI Act risk tiers, the NIST AI RMF and one recent AI safety story well"},
+            {"title": "Interview prep: walk through Project 1 in 3 minutes (question, method, result, limitation)"},
+            {"title": "Interview prep: practise the case \"How would you assess the risks of deploying a chatbot for mental health support?\""},
+            {"title": "Interview prep: practise your one-line AWS answer", "details": "\"The role ended after security vetting on the project didn't progress; it showed me I want to work on the risk and impact side of technology.\""}
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 5,
+      "title": "Deepen into ethics and psychology",
+      "span": "months 9–24",
+      "starts": "2027-06-28",
+      "ends": "2028-10-29",
+      "goal": "Once you're inside the field, move toward the human and ethical side you care most about. A mainly ethics or psychology role at 2–4 years.",
+      "checkpoint": "a role that is mainly ethics or psychology",
+      "stages": [
+        {
+          "title": "Deepen (months 9–24)",
+          "due": null,
+          "steps": [
+            {"title": "Pick your long-term lane by month 12: human-AI interaction research, AI ethics/policy research, or model behaviour", "details": "Your first job will show you what you enjoy. By Oct 2027."},
+            {"title": "Choose a credential for the lane: IAPP AIGP (governance) or a part-time MSc (research)", "link": "https://trainingcamp.com/articles/iapp-aigp-certification-what-it-covers-and-whether-its-worth-pursuing/", "details": "AIGP: self-study over a few months, exam about $799, ideally employer-funded. MSc: AI ethics, AI and society, cognitive science or a psychology conversion, part-time in London."},
+            {"title": "Publish more seriously: a longer evaluation study, a co-authored paper, or a workshop submission"},
+            {"title": "Move internally toward roles on user behaviour and wellbeing", "details": "Trust & safety policy, user research on AI products, model behaviour teams."}
+          ]
+        }
+      ]
+    }
+  ],
+  "habits": [
+    {"title": "AI career: learning log (one paragraph on what you read)", "starts": "2026-10-26", "details": "About 20 min. It becomes material for your posts."},
+    {"title": "AI career: message someone on LinkedIn in a role you want", "days": "tue,sat", "starts": "2026-11-23", "details": "Ask one specific question about their path; don't ask for a job. Two a week."},
+    {"title": "AI career: comment thoughtfully on an AI governance post", "days": "wed", "starts": "2026-11-23"},
+    {"title": "AI career: weekly applications (2–3 stretch, 5–8 realistic, 2–3 bridge)", "days": "sat", "starts": "2027-01-25", "details": "About 3–4 h. Tailor each one, log it in the tracker, and check what's getting replies."}
+  ]
+}
