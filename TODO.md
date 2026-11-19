@@ -36,7 +36,7 @@ Tell Claude anything that felt off (tone, length, too pushy, wrong filing, uncle
 - [ ] **⚠️ lines in chat:** if Ultron says "No card was actually made", ask again; tell Claude if one shows up when it shouldn't.
 
 ## Waiting on review
-- [ ] **One-off appointments from chat (being built, steps OK'd 19 Nov):** when you ask in Telegram for a one-off without a start and end, Ultron asks, then adds it to the 📅 Schedule. When it's ready you'll be asked to OK one live check (~$0.02) and to run the deploy.
+- [ ] **One-off appointments from chat: built, ready to deploy** (commit `3648308` on `main` on the server, not pushed yet; 633 tests pass). Ask in Telegram for a one-off without a time and Ultron asks for the start and end, then adds it to the 📅 Schedule. Next: OK the push, deploy (`git pull && docker compose -f deploy/docker-compose.yml up -d --build`), then one live check ("dentist Monday", then answer the time; 2 calls, ~$0.02).
 
 ## Placeholders in code
 - [ ] **Claude prices are hard-coded** in `ultron/ops/guard.py` (`PRICES`, checked 2026-10-19). Update them if Anthropic changes prices or you switch models; until then, unknown models are costed at the highest rate.
