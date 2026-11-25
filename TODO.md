@@ -24,6 +24,7 @@ _Last updated: 2026-11-25_
 
 ## Try and give feedback (whenever)
 Tell Claude anything that felt off (tone, length, too pushy, wrong filing, unclear buttons).
+- [ ] **Reply box cleared on start (deployed 25 Nov):** open Ultron's chat on your phone: no "Replying to…" box and no leftover "↻" message. If either is there, tell Claude.
 - [ ] **📥 Long notes (new 23 Nov):** write a multi-line note on your phone, leave a blank line before the next one. It should reach the Board 15–75 min later, whole. If anything is cut short again, tell Claude straight away.
 - [ ] **One-off appointments (deployed 23 Nov):** in Telegram say "dentist Monday" without a time; Ultron should ask for start and end, then add it to the 📅 Schedule (~$0.02).
 - [ ] **Chat:** a look-up, a tick ("I changed the bedsheets"), an add ("remind me to X on Monday": should show "· on Mon"), "remember …" plus [Undo], a `!` message (Sonnet), something personal.
@@ -37,14 +38,13 @@ Tell Claude anything that felt off (tone, length, too pushy, wrong filing, uncle
 - [ ] **⚠️ lines in chat:** if Ultron says "No card was actually made", ask again; tell Claude if one shows up when it shouldn't.
 
 ## Waiting on review
-- [ ] **Push and deploy "clear the reply box on start"** (commit on the server's `main`, not pushed). Say go and Claude pushes and deploys. After it restarts, check Telegram on your phone: no "Replying to…" box and no leftover "↻" message. If a "↻" stays visible, tell Claude.
 
 ## Placeholders in code
 - [ ] **Claude prices are hard-coded** in `ultron/ops/guard.py` (`PRICES`, checked 2026-10-19). Update them if Anthropic changes prices or you switch models; until then, unknown models are costed at the highest rate.
 
 ## Done
 _Older entries (before 1 Nov) are in [DONE-ARCHIVE.md](DONE-ARCHIVE.md)._
-- [x] 2026-11-25: **Clear the reply box on every bot start: yes, both.** On start Ultron forgets any open question and sends a silent self-deleting message to clear Telegram's reply box. Built (commit `a1eef78`, 642 tests pass); not pushed or deployed yet.
+- [x] 2026-11-25: **Clear the reply box on every bot start: yes, both.** On start Ultron forgets any open question and sends a silent self-deleting message to clear Telegram's reply box. Built (commit `a1eef78`, 642 tests pass); deployed 25 Nov 12:03 (backup: `~/ultron/backups/pre-reply-box-2026-11-25.db`); first start cleared your DM (1 of 1).
 - [x] 2026-11-23: **Inbox fix and one-off appointments deployed** (23:43, commit `84fad13`). Backup from just before: `~/ultron/backups/pre-inbox-settle-2026-11-23.db`. Board repaired: Mojtaba pitch to-do restored and ticked done, new to-do "Start work on Mojtaba website work", stray "find" dropped.
 - [x] 2026-11-23: **Inbox bug root cause found and decided:** Ultron moved notes out of the Inbox while the phone was still saving them, so the rest was lost ("Urgent:" on 22 Nov), and it sorted each line on its own. Fix: wait 15 min, blank line = new note.
 - [x] 2026-11-18: **TODO tidied:** out-of-date checks removed, "try" items merged, Done before 1 Nov moved to `DONE-ARCHIVE.md`. Old one-off backups deleted (17 `pre-*` files in `~/ultron/backups/` and `~/ultron-neutralise`); nightly backups untouched.
