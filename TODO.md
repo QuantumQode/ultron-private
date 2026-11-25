@@ -37,13 +37,14 @@ Tell Claude anything that felt off (tone, length, too pushy, wrong filing, uncle
 - [ ] **⚠️ lines in chat:** if Ultron says "No card was actually made", ask again; tell Claude if one shows up when it shouldn't.
 
 ## Waiting on review
+- [ ] **Push and deploy "clear the reply box on start"** (commit on the server's `main`, not pushed). Say go and Claude pushes and deploys. After it restarts, check Telegram on your phone: no "Replying to…" box and no leftover "↻" message. If a "↻" stays visible, tell Claude.
 
 ## Placeholders in code
 - [ ] **Claude prices are hard-coded** in `ultron/ops/guard.py` (`PRICES`, checked 2026-10-19). Update them if Anthropic changes prices or you switch models; until then, unknown models are costed at the highest rate.
 
 ## Done
 _Older entries (before 1 Nov) are in [DONE-ARCHIVE.md](DONE-ARCHIVE.md)._
-- [x] 2026-11-25: **Clear the reply box on every bot start: yes, both.** On start Ultron forgets any open question and sends a silent self-deleting message to clear Telegram's reply box. Plan given; waiting for your go-ahead to build it.
+- [x] 2026-11-25: **Clear the reply box on every bot start: yes, both.** On start Ultron forgets any open question and sends a silent self-deleting message to clear Telegram's reply box. Built (commit `a1eef78`, 642 tests pass); not pushed or deployed yet.
 - [x] 2026-11-23: **Inbox fix and one-off appointments deployed** (23:43, commit `84fad13`). Backup from just before: `~/ultron/backups/pre-inbox-settle-2026-11-23.db`. Board repaired: Mojtaba pitch to-do restored and ticked done, new to-do "Start work on Mojtaba website work", stray "find" dropped.
 - [x] 2026-11-23: **Inbox bug root cause found and decided:** Ultron moved notes out of the Inbox while the phone was still saving them, so the rest was lost ("Urgent:" on 22 Nov), and it sorted each line on its own. Fix: wait 15 min, blank line = new note.
 - [x] 2026-11-18: **TODO tidied:** out-of-date checks removed, "try" items merged, Done before 1 Nov moved to `DONE-ARCHIVE.md`. Old one-off backups deleted (17 `pre-*` files in `~/ultron/backups/` and `~/ultron-neutralise`); nightly backups untouched.
