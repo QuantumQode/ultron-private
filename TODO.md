@@ -1,11 +1,10 @@
 # TODO
 
-_Last updated: 2026-11-23_
+_Last updated: 2026-11-25_
 
 ## Decide
 - [ ] **RAG / semantic recall: decide the design and when to build it** (prompt drafted 9 Nov). Semantic search over the activity log, email summaries, journal and Reflect summaries, and old Board/Log notes, through one read-only `recall` tool. Proposed: `sqlite-vec` inside the existing SQLite database, a local embedding model (no data leaves the VPS), and hybrid keyword (SQLite FTS5) + vector search. Measured on 30–50 labelled questions (recall@5, MRR) for the CV. The index must follow the existing deletion rules: Reflect transcripts (90 days, blanked in the log) and email summaries (90 days) lose their embeddings too. Decide: (1) the embedding model: local (small, ~100 MB, so it fits once friends each get a container in Phase 5, or one shared model for all) or hosted (Voyage AI, Anthropic's recommended partner: a new outbound service that would see your data, needs your OK); (2) what gets indexed; (3) timing: Phase 1 and the repo split are done, so either now on its own `rag` branch, or after the friends phases (3–6). **Claude's full design and 8-step plan: reply of 19 Nov** (recommends a local `bge-small-en-v1.5` via `fastembed`, keyword search first, then vectors, measuring the gain). Also decide whether chat history and full Reflect transcripts get indexed, or only summaries.
 - [ ] **Continue Phase 4 (onboarding) later:** steps 1–4 (`/start` offers setup to a new user, onboarding "rules" become facts, a coaching-style question, the `/` command menu) are parked on branch `phase4-onboarding` (commit `521b3f3`, server only, not pushed; 623 tests pass). Not yet tested live or deployed. Next: a real first-run test with a second bot: make a bot in BotFather and an empty "Ultron Test" Notion page shared with your integration (under $0.10 of Claude calls). Then merge into `main`.
-- [ ] **Clear the reply box on every bot start?** Say yes and Claude adds it, so an old stuck "Replying to…" can never come back after a deploy.
 - [ ] **Pick which "smarter Ultron" ideas to build next** (list in Claude's reply, 22 Oct). Claude suggests starting with: learn real task durations, a morning energy tap, and next steps for each goal.
 - [ ] **Speech-to-text provider for voice notes:** decide at Phase 7.
 - [ ] **Answer the email questions on your 🗂 Board:** to-dos from emails more than a week old show "(?) From an email on 20 Sep. Still needed?". Tick the done ones, delete the ones you don't need, or delete just the "(?) …" part to keep one.
@@ -44,6 +43,7 @@ Tell Claude anything that felt off (tone, length, too pushy, wrong filing, uncle
 
 ## Done
 _Older entries (before 1 Nov) are in [DONE-ARCHIVE.md](DONE-ARCHIVE.md)._
+- [x] 2026-11-25: **Clear the reply box on every bot start: yes, both.** On start Ultron forgets any open question and sends a silent self-deleting message to clear Telegram's reply box. Plan given; waiting for your go-ahead to build it.
 - [x] 2026-11-23: **Inbox fix and one-off appointments deployed** (23:43, commit `84fad13`). Backup from just before: `~/ultron/backups/pre-inbox-settle-2026-11-23.db`. Board repaired: Mojtaba pitch to-do restored and ticked done, new to-do "Start work on Mojtaba website work", stray "find" dropped.
 - [x] 2026-11-23: **Inbox bug root cause found and decided:** Ultron moved notes out of the Inbox while the phone was still saving them, so the rest was lost ("Urgent:" on 22 Nov), and it sorted each line on its own. Fix: wait 15 min, blank line = new note.
 - [x] 2026-11-18: **TODO tidied:** out-of-date checks removed, "try" items merged, Done before 1 Nov moved to `DONE-ARCHIVE.md`. Old one-off backups deleted (17 `pre-*` files in `~/ultron/backups/` and `~/ultron-neutralise`); nightly backups untouched.
