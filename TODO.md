@@ -24,6 +24,7 @@ _Last updated: 2026-11-26_
 
 ## Try and give feedback (whenever)
 Tell Claude anything that felt off (tone, length, too pushy, wrong filing, unclear buttons).
+- [ ] **Date fix (deployed 26 Nov):** over the next few days, say things like "tomorrow" or "Monday" in chat. Ultron should always know today's date. If it mixes up the day again, tell Claude.
 - [ ] **Reply box cleared on start (deployed 25 Nov):** open Ultron's chat on your phone: no "Replying to…" box and no leftover "↻" message. If either is there, tell Claude.
 - [ ] **📥 Long notes (new 23 Nov):** write a multi-line note on your phone, leave a blank line before the next one. It should reach the Board 15–75 min later, whole. If anything is cut short again, tell Claude straight away.
 - [ ] **One-off appointments (deployed 23 Nov):** in Telegram say "dentist Monday" without a time; Ultron should ask for start and end, then add it to the 📅 Schedule (~$0.02).
@@ -38,13 +39,13 @@ Tell Claude anything that felt off (tone, length, too pushy, wrong filing, uncle
 - [ ] **⚠️ lines in chat:** if Ultron says "No card was actually made", ask again; tell Claude if one shows up when it shouldn't.
 
 ## Waiting on review
-- [ ] **Date fix pushed (commit `bc3e1d7`), not deployed yet: say go to deploy.** Ultron lost the date because old chat messages reached Claude without dates (your "today is Sunday 22nd" from 22 Nov was still in view on 26 Nov). Now your past messages are stamped like `[Sun 22 Nov, 20:41]` (decided: yours only), and Claude is told the Now line is the real date. 645 tests pass. No extra Claude calls.
 
 ## Placeholders in code
 - [ ] **Claude prices are hard-coded** in `ultron/ops/guard.py` (`PRICES`, checked 2026-10-19). Update them if Anthropic changes prices or you switch models; until then, unknown models are costed at the highest rate.
 
 ## Done
 _Older entries (before 1 Nov) are in [DONE-ARCHIVE.md](DONE-ARCHIVE.md)._
+- [x] 2026-11-26: **Date fix deployed** (18:18, commit `bc3e1d7`): your past chat messages reach Claude with their date. Backup from just before: `~/ultron/backups/pre-date-stamp-2026-11-26.db`. Old `neutralise` branch deleted (it's all in `archive-main`).
 - [x] 2026-11-26: **Date bug cause found and stamping decided:** only your past messages get a date stamp.
 - [x] 2026-11-25: **Clear the reply box on every bot start: yes, both.** On start Ultron forgets any open question and sends a silent self-deleting message to clear Telegram's reply box. Built (commit `a1eef78`, 642 tests pass); deployed 25 Nov 12:03 (backup: `~/ultron/backups/pre-reply-box-2026-11-25.db`); first start cleared your DM (1 of 1).
 - [x] 2026-11-23: **Inbox fix and one-off appointments deployed** (23:43, commit `84fad13`). Backup from just before: `~/ultron/backups/pre-inbox-settle-2026-11-23.db`. Board repaired: Mojtaba pitch to-do restored and ticked done, new to-do "Start work on Mojtaba website work", stray "find" dropped.
