@@ -1,6 +1,6 @@
 # TODO
 
-_Last updated: 2026-11-25_
+_Last updated: 2026-11-26_
 
 ## Decide
 - [ ] **RAG / semantic recall: decide the design and when to build it** (prompt drafted 9 Nov). Semantic search over the activity log, email summaries, journal and Reflect summaries, and old Board/Log notes, through one read-only `recall` tool. Proposed: `sqlite-vec` inside the existing SQLite database, a local embedding model (no data leaves the VPS), and hybrid keyword (SQLite FTS5) + vector search. Measured on 30–50 labelled questions (recall@5, MRR) for the CV. The index must follow the existing deletion rules: Reflect transcripts (90 days, blanked in the log) and email summaries (90 days) lose their embeddings too. Decide: (1) the embedding model: local (small, ~100 MB, so it fits once friends each get a container in Phase 5, or one shared model for all) or hosted (Voyage AI, Anthropic's recommended partner: a new outbound service that would see your data, needs your OK); (2) what gets indexed; (3) timing: Phase 1 and the repo split are done, so either now on its own `rag` branch, or after the friends phases (3–6). **Claude's full design and 8-step plan: reply of 19 Nov** (recommends a local `bge-small-en-v1.5` via `fastembed`, keyword search first, then vectors, measuring the gain). Also decide whether chat history and full Reflect transcripts get indexed, or only summaries.
@@ -38,12 +38,14 @@ Tell Claude anything that felt off (tone, length, too pushy, wrong filing, uncle
 - [ ] **⚠️ lines in chat:** if Ultron says "No card was actually made", ask again; tell Claude if one shows up when it shouldn't.
 
 ## Waiting on review
+- [ ] **Date fix ready, not deployed: say go to commit, push and deploy.** Ultron lost the date because old chat messages reached Claude without dates (your "today is Sunday 22nd" from 22 Nov was still in view on 26 Nov). Now your past messages are stamped like `[Sun 22 Nov, 20:41]` (decided: yours only), and Claude is told the Now line is the real date. 645 tests pass. No extra Claude calls.
 
 ## Placeholders in code
 - [ ] **Claude prices are hard-coded** in `ultron/ops/guard.py` (`PRICES`, checked 2026-10-19). Update them if Anthropic changes prices or you switch models; until then, unknown models are costed at the highest rate.
 
 ## Done
 _Older entries (before 1 Nov) are in [DONE-ARCHIVE.md](DONE-ARCHIVE.md)._
+- [x] 2026-11-26: **Date bug cause found and stamping decided:** only your past messages get a date stamp.
 - [x] 2026-11-25: **Clear the reply box on every bot start: yes, both.** On start Ultron forgets any open question and sends a silent self-deleting message to clear Telegram's reply box. Built (commit `a1eef78`, 642 tests pass); deployed 25 Nov 12:03 (backup: `~/ultron/backups/pre-reply-box-2026-11-25.db`); first start cleared your DM (1 of 1).
 - [x] 2026-11-23: **Inbox fix and one-off appointments deployed** (23:43, commit `84fad13`). Backup from just before: `~/ultron/backups/pre-inbox-settle-2026-11-23.db`. Board repaired: Mojtaba pitch to-do restored and ticked done, new to-do "Start work on Mojtaba website work", stray "find" dropped.
 - [x] 2026-11-23: **Inbox bug root cause found and decided:** Ultron moved notes out of the Inbox while the phone was still saving them, so the rest was lost ("Urgent:" on 22 Nov), and it sorted each line on its own. Fix: wait 15 min, blank line = new note.
