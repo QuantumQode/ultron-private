@@ -38,7 +38,7 @@ Tell Claude anything that felt off (tone, length, too pushy, wrong filing, uncle
 - [ ] **⚠️ lines in chat:** if Ultron says "No card was actually made", ask again; tell Claude if one shows up when it shouldn't.
 
 ## Waiting on review
-- [ ] **Date fix ready, not deployed: say go to commit, push and deploy.** Ultron lost the date because old chat messages reached Claude without dates (your "today is Sunday 22nd" from 22 Nov was still in view on 26 Nov). Now your past messages are stamped like `[Sun 22 Nov, 20:41]` (decided: yours only), and Claude is told the Now line is the real date. 645 tests pass. No extra Claude calls.
+- [ ] **Date fix pushed (commit `bc3e1d7`), not deployed yet: say go to deploy.** Ultron lost the date because old chat messages reached Claude without dates (your "today is Sunday 22nd" from 22 Nov was still in view on 26 Nov). Now your past messages are stamped like `[Sun 22 Nov, 20:41]` (decided: yours only), and Claude is told the Now line is the real date. 645 tests pass. No extra Claude calls.
 
 ## Placeholders in code
 - [ ] **Claude prices are hard-coded** in `ultron/ops/guard.py` (`PRICES`, checked 2026-10-19). Update them if Anthropic changes prices or you switch models; until then, unknown models are costed at the highest rate.
